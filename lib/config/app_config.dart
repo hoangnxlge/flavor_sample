@@ -6,16 +6,19 @@ class AppConfig {
   final AppFlavor flavor;
   final String configTitle;
   // Add more config properties here
+  final double appHeight;
 
   AppConfig._internal({
     required this.flavor,
     required this.configTitle,
+    required this.appHeight,
   });
 
   factory AppConfig.tv() {
     return AppConfig._internal(
       configTitle: 'Config for 16:9 screen',
       flavor: AppFlavor.tv,
+      appHeight: 120,
     );
   }
 
@@ -23,6 +26,7 @@ class AppConfig {
     return AppConfig._internal(
       configTitle: 'Config for 21:9 screen',
       flavor: AppFlavor.monitor,
+      appHeight: 94,
     );
   }
 }
