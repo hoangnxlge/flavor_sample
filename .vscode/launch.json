@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "name": "Flutter TV",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib\\main.dart",
+            "args": [
+                "--dart-define", 
+                "flavor=tv"
+            ]
+        },
+        {
+            "name": "Flutter Monitor",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib\\main.dart",
+            "args": [
+                "--dart-define", 
+                "flavor=monitor"
+            ]
+        },
+        {
+            "name": "Flutter StandByMe",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib\\main.dart",
+            "args": [
+                "--dart-define", 
+                "flavor=standbyme"
+            ]
+        }
+    ]
+}

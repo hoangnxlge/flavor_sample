@@ -1,24 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-enum AppFlavor { tv, monitor } // Add more flavors here
+enum AppFlavor { tv, monitor, standbyme } // Add more flavors here
 
 class AppConfig {
   final AppFlavor flavor;
   final String configTitle;
-  // Add more config properties here
-  final double appHeight;
 
   AppConfig._internal({
     required this.flavor,
     required this.configTitle,
-    required this.appHeight,
   });
 
   factory AppConfig.tv() {
     return AppConfig._internal(
       configTitle: 'Config for 16:9 screen',
       flavor: AppFlavor.tv,
-      appHeight: 120,
     );
   }
 
@@ -26,7 +22,13 @@ class AppConfig {
     return AppConfig._internal(
       configTitle: 'Config for 21:9 screen',
       flavor: AppFlavor.monitor,
-      appHeight: 94,
+    );
+  }
+
+  factory AppConfig.standbyme() {
+    return AppConfig._internal(
+      configTitle: 'Config for 16:9 screen standbyme',
+      flavor: AppFlavor.standbyme,
     );
   }
 }
@@ -47,6 +49,8 @@ final appConfigProvider = Provider<AppConfig>(
         return AppConfig.tv();
       case AppFlavor.monitor:
         return AppConfig.monitor();
+      case AppFlavor.standbyme:
+        return AppConfig.standbyme();
     }
   },
 );
