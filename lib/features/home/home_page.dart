@@ -1,4 +1,5 @@
 import 'package:flavor_sample/config/app_config.dart';
+import 'package:flavor_sample/features/home/app_list/applist_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,15 +13,7 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   late final appConfig = ref.read(appConfigProvider);
 
-  // This getter is used in example 2
-  double get appHeight {
-    switch (appConfig.flavor) {
-      case AppFlavor.tv:
-        return 120;
-      case AppFlavor.monitor:
-        return 94;
-    }
-  }
+  late final styles =  ApplistStyles.setup(flavor: appConfig.flavor);
 
   @override
   Widget build(BuildContext context) {
@@ -49,30 +42,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                       children: [
                         Image.asset(
                           'assets/app.png',
-                          height: appConfig.appHeight,
+                          height: styles.appIconSize,
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          'Example 1: create appHeight property in appConfig\n'
-                          'appConfig.appHeight = ${appConfig.appHeight}',
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/app.png',
-                          height: appHeight,
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          'Example 2: use AppFlavor enum to detect flavor and set height\n'
-                          'If flavor is tv, appHeight = 120\n'
-                          'If flavor is monitor, appHeight = 94\n'
-                          'current flavor is ${appConfig.flavor.name} => appHeight = $appHeight',
+                          'appSize = ${styles.appSize}',
                           textAlign: TextAlign.center,
                         ),
                       ],
